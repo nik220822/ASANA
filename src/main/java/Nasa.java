@@ -1,11 +1,13 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Nasa {
-    String date;
-    String explanation;
-    String hdurl;
-    String media_type;
-    String service_version;
-    String title;
-    String url;
+    private String date;
+    private String explanation;
+    private String hdurl;
+    private String mediaType;
+    private String serviceVersion;
+    private String title;
+    private String url;
 
     public Nasa() {
     }
@@ -14,8 +16,8 @@ public class Nasa {
         this.date = date;
         this.explanation = explanation;
         this.hdurl = hdurl;
-        this.media_type = media_type;
-        this.service_version = service_version;
+        this.mediaType = media_type;
+        this.serviceVersion = service_version;
         this.title = title;
         this.url = url;
     }
@@ -44,20 +46,24 @@ public class Nasa {
         this.hdurl = hdurl;
     }
 
-    public String getMedia_type() {
-        return media_type;
+    @JsonProperty("media_type")
+    public String getMediaType() {
+        return mediaType;
     }
 
-    public void setMedia_type(String media_type) {
-        this.media_type = media_type;
+    @JsonProperty("media_type")
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
-    public String getService_version() {
-        return service_version;
+    @JsonProperty("service_version")
+    public String getServiceVersion() {
+        return serviceVersion;
     }
 
-    public void setService_version(String service_version) {
-        this.service_version = service_version;
+    @JsonProperty("service_version")
+    public void setServiceVersion(String serviceVersion) {
+        this.serviceVersion = serviceVersion;
     }
 
     public String getTitle() {
@@ -79,7 +85,7 @@ public class Nasa {
     @Override
     public String toString() {
         return "date:" + date +
-                "explanation:" + explanation + " hdurl: " + hdurl + " media_type:" + media_type +
-                "service_version:" + service_version + "title:" + title + " url: " + url;
+                "explanation:" + explanation + " hdurl: " + hdurl + " media_type:" + mediaType +
+                "service_version:" + serviceVersion + "title:" + title + " url: " + url;
     }
 }

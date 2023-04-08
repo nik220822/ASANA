@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class Main {
-    public static <Int> void main(String[] args) {
+    public static void main(String[] args) {
         CloseableHttpClient httpClient = HttpClientBuilder.create().setDefaultRequestConfig(RequestConfig.custom().setConnectTimeout(5000)    // максимальное время ожидание подключения к серверу
                 .setSocketTimeout(30000)    // максимальное время ожидания получения данных
                 .setRedirectsEnabled(false) // возможность следовать редиректу в ответе
@@ -24,10 +24,9 @@ public class Main {
             ObjectMapper objectMapper = new ObjectMapper();
             Nasa nasa = objectMapper.readValue(string, new TypeReference<>() {
             });
-            System.out.println(nasa);
-            response = httpClient.execute(new HttpGet(nasa.url));
+            response = httpClient.execute(new HttpGet(nasa.getUrl()));
             byte[] fig = response.getEntity().getContent().readAllBytes();
-            String[] urlParts = nasa.url.split("/");
+            String[] urlParts = nasa.getUrl().split("/");
             File file = new File(urlParts[urlParts.length - 1]);
             FileOutputStream fos = new FileOutputStream(file);
             fos.write(fig);
